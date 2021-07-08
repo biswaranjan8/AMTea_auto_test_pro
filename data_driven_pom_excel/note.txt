@@ -1,0 +1,10 @@
+pip install pytest-html
+
+"Html report Supporting plugin  "
+pip install pytest-xdist
+pip install pytest-ordering
+
+
+
+"It can create pytest-html reports use terminal"
+pytest -v -s --html=.\Reports\sign_report.html --self-contained-html

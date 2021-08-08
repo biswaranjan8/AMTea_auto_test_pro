@@ -6,3 +6,4 @@ def startBrowser():
     driver.maximize_window()
     driver.implicitly_wait(10)
     return driver
+

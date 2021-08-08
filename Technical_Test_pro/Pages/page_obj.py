@@ -1,34 +1,46 @@
 from Library.read_config_elements import conf_ele_read
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 
 class Test_Page:
 
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 20)
 
     def gift_link(self):
         """It will click Gift link"""
-        return self.driver.find_element_by_xpath(conf_ele_read('element_section', 'gift_link_xpath'))
+        gft = self.driver.find_element_by_xpath(conf_ele_read('element_section', 'gift_link_xpath'))
+        return gft
 
     def Policeman_box_link(self):
-        """It will Click Policeman Box"""
-        return self.driver.find_element_by_xpath(conf_ele_read('element_section', 'Policeman_box_xpath'))
+        """It will Policeman Box"""
+        pol = self.driver.find_element_by_xpath(conf_ele_read('element_section', 'Policeman_box_xpath'))
+        return pol
 
     def close_alrt_popup(self):
         """It will Close Popup"""
-        return self.driver.find_element_by_xpath(conf_ele_read('element_section', 'close_alrt_popup_xpath'))
+        alrt = self.driver.find_element_by_xpath(conf_ele_read('element_section', 'close_alrt_popup_xpath'))
+        return alrt
 
     def Add_to_tea_Basket(self):
         """It will Add to basket item"""
-        return self.driver.find_element_by_xpath(conf_ele_read('element_section', 'Add_to_tea_Basket_xpath'))
+        add = self.driver.find_element_by_xpath(conf_ele_read('element_section', 'Add_to_tea_Basket_xpath'))
+        return add
 
     def Sub_Total_text(self):
-        """It will select Sub total Amount"""
-        return self.driver.find_element_by_xpath(conf_ele_read('element_section', 'Sub_Total_xpath')).text
+        """It will select Sub total Amount and By Using explicit wait"""
+        sub_Total_wait = self.wait.until(EC.visibility_of_element_located(
+            (By.XPATH, conf_ele_read('element_section', 'Sub_Total_xpath'))))
+
+        return sub_Total_wait.text
 
     def remove_chart_link(self):
         """It will remove chart"""
-        return self.driver.find_element_by_xpath(conf_ele_read('element_section', 'remove_chart_xpath'))
+        chart = self.driver.find_element_by_xpath(conf_ele_read('element_section', 'remove_chart_xpath'))
+        return chart
 
     ################## Operation #######################
 
